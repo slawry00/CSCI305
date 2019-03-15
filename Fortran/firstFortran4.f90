@@ -4,7 +4,7 @@
 ! CSCI 305
 
 PROGRAM firstFortran1
-IMPLICIT NONE
+   IMPLICIT NONE
 
    integer              :: cents, quart, dime, nick, pen
    character(len = 20)  :: dateinfo, timeinfo, date, time, fulldt
@@ -18,17 +18,17 @@ IMPLICIT NONE
    write (*,*) "How many cents do you want to make change from (1-99)?"
    read (*,*) cents
 
-   if (cents < 99 .OR. cents > 1) then
+   if (cents > 99 .OR. cents < 1) then
    write (*,*) "Invalid Input"
    stop
    end if
 
-   quart = cents/25
-   cents = cents - (quart*25)
-   dime = cents/10
-   cents = cents - (dime*10)
-   nick = cents/5
-   cents = cents - (nick*5)
+   quart = count_coins(cents, 25)
+   cents = cents - (25*quart)
+   dime = count_coins(cents, 10)
+   cents = cents - (10*dime)
+   nick = count_coins(cents, 5)
+   cents = cents - (5*nick)
    pen = cents
 
    if (quart > 0) then
@@ -48,6 +48,13 @@ IMPLICIT NONE
    end if
    write (*,*)
 
+contains
+   integer function count_coins(coins, worth)
+   IMPLICIT NONE
+   integer, intent(in) :: coins, worth
+
+   count_coins = coins/worth
+   end function count_coins
 
 
 END PROGRAM firstFortran1
