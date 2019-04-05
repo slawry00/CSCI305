@@ -1,0 +1,17 @@
+fun main() 
+{
+    
+}
+
+class City(var name: String, var latitude: Double, var longitude : Double)
+
+fun listCities() : List<City>
+{
+    var my_list : MutableList<City> = mutableListOf()
+    my_list.add(City("Atlanta", 33.7490, -84.3880))
+    my_list.add(City("Bozeman", 45.6770, -111.0429))
+    my_list.add(City("New York", 40.7128, -74.0060))
+    my_list.add(City("San Francisco", 37.7749, -122.4194))
+    my_list.add(City("Tacoma", 47.2529, -122.4443))
+    return (List) my_list
+}
